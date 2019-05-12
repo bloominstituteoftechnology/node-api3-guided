@@ -1,6 +1,7 @@
 const express = require('express');
 
 const Hubs = require('./hubs-model.js');
+const Messages = require('../messages/messages-model.js');
 
 const router = express.Router();
 
@@ -106,7 +107,7 @@ router.post('/:id/messages', async (req, res) => {
   const messageInfo = { ...req.body, hub_id: req.params.id };
 
   try {
-    const message = await Hubs.addMessage(messageInfo);
+    const message = await Messages.add(messageInfo);
     res.status(210).json(message);
   } catch (error) {
     // log error to server
