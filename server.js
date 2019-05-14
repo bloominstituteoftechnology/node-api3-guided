@@ -8,7 +8,7 @@ server.use(express.json());
 
 server.use('/api/hubs', hubsRouter);
 
-server.get('/', (req, res, next) => {
+server.get('/', (req, res) => {
   const nameInsert = (req.name) ? ` ${req.name}` : '';
 
   res.send(`
