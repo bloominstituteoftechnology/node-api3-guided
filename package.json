@@ -18,11 +18,11 @@
   "homepage": "https://github.com/LambdaSchool/webapi-iii-guided-solution#readme",
   "devDependencies": {
     "knex-cleaner": "^1.1.4",
-    "nodemon": "^1.18.11"
+    "nodemon": "^1.19.1"
   },
   "dependencies": {
-    "express": "^4.16.4",
-    "knex": "^0.16.5",
-    "sqlite3": "^4.0.6"
+    "express": "^4.17.1",
+    "knex": "^0.17.0",
+    "sqlite3": "^4.0.8"
   }
 }
