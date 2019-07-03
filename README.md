@@ -2,7 +2,7 @@
 
 Guided project for **Web API III** module.
 
-In this project we will learn how to create a very simple Web API using `Node.js` and `Express`, and learn tu use and create `Express Middleware`.
+In this project we will learn how to create a very simple Web API using `Node.js` and `Express`, and learn to use and create `Express Middleware`.
 
 ## Prerequisites
 
