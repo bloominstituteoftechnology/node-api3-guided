@@ -1,6 +1,6 @@
-# Web API III Guided Project
+# Node API 3 Guided Project
 
-Guided project for **Web API III** module.
+Guided project for **Node API** module 3.
 
 In this project we will learn how to create a very simple Web API using `Node.js` and `Express`, and learn to use and create `Express Middleware`.
 
