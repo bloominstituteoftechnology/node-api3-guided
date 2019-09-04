@@ -6,7 +6,7 @@ In this project we will learn how to create a very simple Web API using `Node.js
 
 ## Prerequisites
 
-- A REST client like [Insomnia](https://insomnia.rest/download/ or [Postman](https://www.getpostman.com/downloads/) installed.
+- A REST client like [Insomnia](https://insomnia.rest/download/) or [Postman](https://www.getpostman.com/downloads/) installed.
 
 ## Project Setup
 
