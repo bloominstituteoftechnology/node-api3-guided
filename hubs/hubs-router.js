@@ -5,9 +5,6 @@ const Messages = require('../messages/messages-model.js');
 
 const router = express.Router();
 
-// write a mw called uppercase, thet takes the name property of the body and makes it uppercase before it
-// makes it to the request handler/router. Only apply that to routes that begin with ?api/hubs
-// and only on POST and PUT
 
 // router.use(uppercaser);
 
@@ -46,7 +43,7 @@ router.get('/:id', (req, res) => {
   });
 });
 
-router.post('/', uppercaser, (req, res) => {
+router.post('/', check('name') ,uppercaser, (req, res) => {
   Hubs.add(req.body)
   .then(hub => {
     res.status(201).json(hub);
@@ -78,7 +75,7 @@ router.delete('/:id', (req, res) => {
   });
 });
 
-router.put('/:id', uppercaser, (req, res) => {
+router.put('/:id', check('name') ,uppercaser, (req, res) => {
   Hubs.update(req.params.id, req.body)
   .then(hub => {
     if (hub) {
@@ -129,6 +126,10 @@ router.post('/:id/messages', (req, res) => {
   });
 });
 
+// write a mw called uppercase, thet takes the name property of the body and makes it uppercase before it
+// makes it to the request handler/router. Only apply that to routes that begin with ?api/hubs
+// and only on POST and PUT
+
 function uppercaser(req, res, next) {
   if(typeof req.body.name === 'string'){
     req.body.name = req.body.name.toUpperCase();
@@ -140,5 +141,20 @@ function uppercaser(req, res, next) {
   
 }
 
+// wriite a middlewaare called checkFor that takes the name of a property and checks that the body has thet property
+// if the property is not there, respond with status code 400 and an object like this: { error message: 'requires ${property'}
+// where property is what is what we're validating. if we use it like this: checkFor('age'); the mesagge will read "required age".
+// use it on the POST and PUT to check that the body has the "name" property.
+
+function check(prop) {
+
+  return function(req, res, next) {
+    if(req.body[prop]) {
+      next();
+    } else {
+      res.status(400).json({ errorMessage: `requires ${prop}`});
+    }
+  }
+}
 
 module.exports = router;
