@@ -5,8 +5,14 @@ const Messages = require('../messages/messages-model.js');
 
 const router = express.Router();
 
+// write a mw called uppercase, thet takes the name property of the body and makes it uppercase before it
+// makes it to the request handler/router. Only apply that to routes that begin with ?api/hubs
+// and only on POST and PUT
+
+// router.use(uppercaser);
+
 // this only runs if the url has /api/hubs in it
-router.get('/', (req, res) => {
+router.get('/',  (req, res) => {
   Hubs.find(req.query)
   .then(hubs => {
     res.status(200).json(hubs);
@@ -40,7 +46,7 @@ router.get('/:id', (req, res) => {
   });
 });
 
-router.post('/', (req, res) => {
+router.post('/', uppercaser, (req, res) => {
   Hubs.add(req.body)
   .then(hub => {
     res.status(201).json(hub);
@@ -72,7 +78,7 @@ router.delete('/:id', (req, res) => {
   });
 });
 
-router.put('/:id', (req, res) => {
+router.put('/:id', uppercaser, (req, res) => {
   Hubs.update(req.params.id, req.body)
   .then(hub => {
     if (hub) {
@@ -122,5 +128,17 @@ router.post('/:id/messages', (req, res) => {
     });
   });
 });
+
+function uppercaser(req, res, next) {
+  if(typeof req.body.name === 'string'){
+    req.body.name = req.body.name.toUpperCase();
+
+    next();
+  } else {
+    res.status(400).json({error: 'the name should be a string'});
+  }
+  
+}
+
 
 module.exports = router;
