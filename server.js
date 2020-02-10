@@ -2,6 +2,10 @@ const express = require('express'); // importing a CommonJS module
 
 const hubsRouter = require('./hubs/hubs-router.js');
 
+const helmet = require('helmet'); // npm i helmet
+
+const morgan = require('morgan'); // npm i morgan
+
 const server = express();
 
 
@@ -33,6 +37,8 @@ function gatekeeper(req, res, next) {
 
 // this is a global middleware (cares about all request)
 server.use(express.json());
+server.use(helmet());
+server.use(morgan());
 server.use(logger);
 server.use(echo);
 server.use(gatekeeper);

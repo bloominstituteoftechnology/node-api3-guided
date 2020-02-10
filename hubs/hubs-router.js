@@ -2,6 +2,7 @@ const express = require('express');
 
 const Hubs = require('./hubs-model.js');
 const Messages = require('../messages/messages-model.js');
+const checkFor = require('./checkForMiddleware.js');
 
 const router = express.Router();
 
@@ -43,7 +44,7 @@ router.get('/:id', (req, res) => {
   });
 });
 
-router.post('/', check('name') ,uppercaser, (req, res) => {
+router.post('/', check('name'), uppercaser, (req, res) => {
   Hubs.add(req.body)
   .then(hub => {
     res.status(201).json(hub);
