@@ -15,7 +15,14 @@ server.use(express.json()); //Example 1: Built-In Middleware || No Need to NPM I
 
 Third-Party Middleware
 ```
-server.use(morgan('dev')) // Third Party, need to be NPM INSTALLED
+server.use(helmet()) // Third Party, need to be NPM INSTALLED || 3:
+server.use(morgan('dev')) // Third Party, need to be NPM INSTALLED || 3:
 ```
 
 ---------------------------------------------------------------
+
+Custom Middleware
+```
+Our custom version of "morgan"
+
+```
