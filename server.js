@@ -1,6 +1,6 @@
 const express = require('express'); // importing a CommonJS module
 //THIRD PARTY MIDDLEWARE---------------------------------------------------------------------------
-const morgan = require('morgan') // importing 3rd party middleware || 1: npm i helmet, 2- require
+//const morgan = require('morgan') // importing 3rd party middleware || 1: npm i helmet, 2- require
 const helmet = require('helmet') //importing 3rd party middleware || 1: npm i helmet, 2- require
 //CUSTOM MIDDLEWARE---------------------------------------------------------------------------------
 const statusLogger = require('./middleware/statusLogger')
