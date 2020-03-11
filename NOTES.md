@@ -23,6 +23,6 @@ server.use(morgan('dev')) // Third Party, need to be NPM INSTALLED || 3:
 
 Custom Middleware
 ```
-Our custom version of "morgan"
-
+Please check out the "Middleware" Folder!
+Custom Middleware is any Middleware that you create yourself, Custom.
 ```
