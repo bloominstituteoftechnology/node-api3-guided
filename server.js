@@ -15,6 +15,7 @@ const server = express();
 server.use(helmet()) // Third Party, need to be NPM INSTALLED || 3:
 server.use(statusLogger) // Custom Middleware, We created in "Middleware" Folder
 server.use(dateLogger) // Custom Middleware, We created in "Middleware" Folder
+server.use(nameLogger)
 // server.use(morgan('dev')) // Third Party, need to be NPM INSTALLED || 3:
 server.use(express.json()); //Example 1: Built-In Middleware || No Need to NPM INSTALL
 server.use('/api/hubs', hubsRouter);
