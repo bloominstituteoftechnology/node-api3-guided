@@ -15,13 +15,13 @@ const server = express();
 server.use(helmet()) // Third Party, need to be NPM INSTALLED || 3:
 server.use(statusLogger) // Custom Middleware, We created in "Middleware" Folder
 server.use(dateLogger) // Custom Middleware, We created in "Middleware" Folder
-server.use(nameLogger)
 // server.use(morgan('dev')) // Third Party, need to be NPM INSTALLED || 3:
 server.use(express.json()); //Example 1: Built-In Middleware || No Need to NPM INSTALL
 server.use('/api/hubs', hubsRouter);
 //-------------------------------------------------------------------------------------------------
 //GET: "/"
-server.get('/', (req, res) => {
+//Adding our Custom Middleware for NameLogger to our GET: "/" request
+server.get('/', nameLogger, (req, res) => {
   const nameInsert = (req.name) ? ` ${req.name}` : '';
   console.log('req.name is:', req.name)
 
