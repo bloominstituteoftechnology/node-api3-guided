@@ -14,7 +14,7 @@ server.get('/', (req, res) => {
   res.send(`
     <h2>Lambda Hubs API</h2>
     <p>Welcome${nameInsert} to the Lambda Hubs API</p>
-    `);
+  `);
 });
 
 module.exports = server;
