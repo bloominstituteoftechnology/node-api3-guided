@@ -112,7 +112,7 @@ router.post('/:id/messages', (req, res) => {
       // log error to server
       console.log(error);
       res.status(500).json({
-        message: 'Error getting the messages for the hub',
+        message: 'Error adding message to the hub',
       });
     });
 });
