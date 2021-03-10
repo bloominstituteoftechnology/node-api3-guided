@@ -9,11 +9,9 @@ server.use(express.json());
 server.use('/api/hubs', hubsRouter);
 
 server.get('/', (req, res) => {
-  const nameInsert = (req.name) ? ` ${req.name}` : '';
-
   res.send(`
     <h2>Lambda Hubs API</h2>
-    <p>Welcome${nameInsert} to the Lambda Hubs API</p>
+    <p>Welcome to the Lambda Hubs API</p>
   `);
 });
 
