@@ -5,6 +5,7 @@ const hubsRouter = require('./hubs/hubs-router.js');
 const server = express();
 
 server.use(express.json());
+server.use(logger)
 
 server.use('/api/hubs', hubsRouter);
 
@@ -16,3 +17,10 @@ server.get('/', (req, res) => {
 });
 
 module.exports = server;
+
+
+
+function logger (req,res,next){
+  console.log(`[${req.method}] ${req.url}`)
+  next()
+}
