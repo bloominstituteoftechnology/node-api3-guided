@@ -6,6 +6,10 @@ const server = express();
 
 server.use(express.json());
 
+server.use((req, res, next) => {
+  console.log('hi from server.js!!!');
+})
+
 server.use('/api/hubs', hubsRouter);
 
 server.get('/', (req, res) => {
