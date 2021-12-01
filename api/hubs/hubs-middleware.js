@@ -41,6 +41,10 @@ async function checkId(req, res, next) {
   // if not, we'll send a 404 to the err handling
   try {
     const hub = await Hub.findById(req.params.id);
+    if (hub) {
+      req.hub = hub; // saves other middlewarws a db trip
+      next();
+    }
   } catch (error) {
     next(error);
   }
