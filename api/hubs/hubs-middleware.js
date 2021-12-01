@@ -27,8 +27,8 @@ function maybeShortCircuit(req, res, next) {
   }
 }
 
-function errorHandling(err) {
-
+function errorHandling(err, req, res, next) {
+  res.
 }
 
 module.exports = {
