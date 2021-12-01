@@ -5,6 +5,7 @@ const {
   maybeShortCircuit,
   errorHandling,
   checkId,
+  checkHubPayload,
 } = require('./hubs-middleware');
 const Hubs = require('./hubs-model.js');
 const Messages = require('../messages/messages-model.js');
@@ -32,7 +33,7 @@ router.get('/:id', checkId, (req, res, next) => {
   res.status(200).json(req.hub);
 });
 
-router.post('/', (req, res, next) => {
+router.post('/', checkHubPayload, (req, res, next) => {
   if (!req.body.name) {
     next({ status: 411, message: 'req.body sucks' });
   } else {
@@ -56,7 +57,7 @@ router.delete('/:id', checkId, (req, res, next) => {
     });
 });
 
-router.put('/:id', checkId, (req, res, next) => {
+router.put('/:id', checkHubPayload, checkId, (req, res, next) => {
   Hubs.update(req.params.id, req.body)
     .then(hub => {
       res.json(hub);
