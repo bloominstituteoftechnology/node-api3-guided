@@ -8,6 +8,7 @@ server.use(express.json());
 
 server.use((req, res, next) => {
   console.log('hi from server.js!!!');
+  console.log(`${req.method} ${req.path}`);
   next();
 });
 
