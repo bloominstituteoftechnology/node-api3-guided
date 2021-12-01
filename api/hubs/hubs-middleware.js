@@ -40,7 +40,7 @@ async function checkId(req, res, next) {
   // object and continue...
   // if not, we'll send a 404 to the err handling
   try {
-    const hub = await Hub.findById(req.params.id)
+    const hub = await Hub.findById(req.params.id);
   } catch (error) {
     next(error);
   }
