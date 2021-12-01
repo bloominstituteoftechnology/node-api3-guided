@@ -33,8 +33,7 @@ function errorHandling(err, req, res, next) { // eslint-disable-line
 }
 
 function checkId(req, res, next) {
-  console.log(`checkId middleware working!!!`);
-  next();
+  
 }
 
 module.exports = {
