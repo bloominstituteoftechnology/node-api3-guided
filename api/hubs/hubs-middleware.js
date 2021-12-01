@@ -28,7 +28,9 @@ function maybeShortCircuit(req, res, next) {
 }
 
 function errorHandling(err, req, res, next) {
-  res.
+  res.status(err.status || 500).json({
+    message: ``,
+  })
 }
 
 module.exports = {
