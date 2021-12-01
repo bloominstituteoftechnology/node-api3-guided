@@ -93,14 +93,14 @@ router.get('/:id/messages', (req, res, next) => {
     });
 });
 
-router.post('/:id/messages', (req, res) => {
+router.post('/:id/messages', (req, res, next) => {
   const messageInfo = { ...req.body, hub_id: req.params.id };
 
   Messages.add(messageInfo)
     .then(message => {
       res.status(210).json(message);
     })
-    .catch();
+    .catch(next);
 });
 
 // this would trap errors in the endpoints above it
