@@ -56,8 +56,11 @@ function checkHubPayload(req, res, next) {
   // this is you!
   // if req.body.name legit proceed
   // otherwise send clinet packeing with 422
-  console.log('checkHubPayload working');
-  next();
+  if (!req.body.name) {
+    next({ status: 422, message: 'I need a name MAN!' });
+  } else {
+    next();
+  }
 }
 
 module.exports = {
