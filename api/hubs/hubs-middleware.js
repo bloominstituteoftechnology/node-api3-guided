@@ -6,12 +6,12 @@ function sayHi(req, res, next) {
   // 3- we toss some error (to an error handling middl)
   console.log(`Hello from the hubs router!`);
   req.cohort = 'Web 48';
-  next();
+  next(); // outcome 1
 }
 
 function greetCohort(req, res, next) {
   console.log(`${req.cohort} is the BEST!`);
-  next();
+  next(); // outcome 1
 }
 
 module.exports = {
