@@ -15,7 +15,10 @@ function greetCohort(req, res, next) {
 }
 
 function maybeShortCircuit(req, res, next) {
-  const cointoss = Math.random()
+  const cointoss = Math.floor(Math.random() * 2);
+  if (cointoss === 1) {
+    
+  }
 }
 
 module.exports = {
