@@ -83,17 +83,13 @@ router.put('/:id', (req, res, next) => {
     });
 });
 
-router.get('/:id/messages', (req, res) => {
+router.get('/:id/messages', (req, res, next) => {
   Hubs.findHubMessages(req.params.id)
     .then(messages => {
       res.status(200).json(messages);
     })
     .catch(error => {
-      // log error to server
-      console.log(error);
-      res.status(500).json({
-        message: 'Error getting the messages for the hub',
-      });
+      next(error);
     });
 });
 
@@ -104,13 +100,7 @@ router.post('/:id/messages', (req, res) => {
     .then(message => {
       res.status(210).json(message);
     })
-    .catch(error => {
-      // log error to server
-      console.log(error);
-      res.status(500).json({
-        message: 'Error adding message to the hub',
-      });
-    });
+    .catch();
 });
 
 // this would trap errors in the endpoints above it
