@@ -34,17 +34,13 @@ router.get('/:id', checkId, (req, res, next) => {
 });
 
 router.post('/', checkHubPayload, (req, res, next) => {
-  if (!req.body.name) {
-    next({ status: 411, message: 'req.body sucks' });
-  } else {
-    Hubs.add(req.body)
-      .then(hub => {
-        res.status(201).json(hub);
-      })
-      .catch(error => {
-        next(error);
-      });
-  }
+  Hubs.add(req.body)
+    .then(hub => {
+      res.status(201).json(hub);
+    })
+    .catch(error => {
+      next(error);
+    });
 });
 
 router.delete('/:id', checkId, (req, res, next) => {
