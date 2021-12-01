@@ -21,9 +21,7 @@ function maybeShortCircuit(req, res, next) {
     next();
   } else {
     // outcome 2: shoot back response
-    res.status(500).json({
-      message: 'this request was short circuited!'
-    });
+    next({ message: 'you shall not pass' });
   }
 }
 

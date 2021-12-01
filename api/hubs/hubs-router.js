@@ -15,7 +15,7 @@ router.use(greetCohort);
 
 router.get(
   '/',
-  // [maybeShortCircuit, maybeShortCircuit],
+  [maybeShortCircuit, maybeShortCircuit],
   (req, res, next) => {
     console.log('truly!', req.cohort);
     Hubs.find(req.query)
