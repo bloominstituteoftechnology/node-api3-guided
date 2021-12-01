@@ -55,7 +55,7 @@ router.post('/', (req, res, next) => {
   }
 });
 
-router.delete('/:id', (req, res) => {
+router.delete('/:id', (req, res, next) => {
   Hubs.remove(req.params.id)
     .then(count => {
       if (count > 0) {
@@ -65,15 +65,11 @@ router.delete('/:id', (req, res) => {
       }
     })
     .catch(error => {
-      // log error to server
-      console.log(error);
-      res.status(500).json({
-        message: 'Error removing the hub',
-      });
+      next(error);
     });
 });
 
-router.put('/:id', (req, res) => {
+router.put('/:id', (req, res, next) => {
   Hubs.update(req.params.id, req.body)
     .then(hub => {
       if (hub) {
@@ -83,11 +79,7 @@ router.put('/:id', (req, res) => {
       }
     })
     .catch(error => {
-      // log error to server
-      console.log(error);
-      res.status(500).json({
-        message: 'Error updating the hub',
-      });
+      next(error);
     });
 });
 
