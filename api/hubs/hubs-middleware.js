@@ -52,10 +52,12 @@ async function checkId(req, res, next) {
   }
 }
 
-function checkHubPayload() {
+function checkHubPayload(req, res, next) {
   // this is you!
   // if req.body.name legit proceed
   // otherwise send clinet packeing with 422
+  console.log('checkHubPayload working');
+  next();
 }
 
 module.exports = {
@@ -64,4 +66,5 @@ module.exports = {
   maybeShortCircuit,
   errorHandling,
   checkId,
+  checkHubPayload,
 };
