@@ -14,6 +14,10 @@ function greetCohort(req, res, next) {
   next(); // outcome 1
 }
 
+function maybeShortCircuit(req, res, next) {
+  const cointoss = Math.random()
+}
+
 module.exports = {
   sayHi,
   greetCohort,
