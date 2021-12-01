@@ -130,6 +130,7 @@ router.post('/:id/messages', (req, res) => {
     });
 });
 
+// this would trap errors in the endpoints above it
 router.use(errorHandling);
 
 module.exports = router;
