@@ -10,7 +10,8 @@ function sayHi(req, res, next) {
 }
 
 function greetCohort(req, res, next) {
-  
+  console.log(`${req.cohort} is the BEST!`);
+  next();
 }
 
 module.exports = {
