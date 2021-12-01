@@ -53,7 +53,7 @@ async function checkId(req, res, next) {
 }
 
 function checkHubPayload() {
-  
+  // this is you!
 }
 
 module.exports = {
