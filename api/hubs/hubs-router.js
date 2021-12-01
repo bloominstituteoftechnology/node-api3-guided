@@ -4,6 +4,7 @@ const {
   greetCohort,
   maybeShortCircuit,
   errorHandling,
+  checkId,
 } = require('./hubs-middleware');
 const Hubs = require('./hubs-model.js');
 const Messages = require('../messages/messages-model.js');
@@ -27,7 +28,7 @@ router.get(
       });
   });
 
-router.get('/:id', (req, res, next) => {
+router.get('/:id', checkId, (req, res, next) => {
   Hubs.findById(req.params.id)
     .then(hub => {
       if (hub) {

@@ -42,4 +42,5 @@ module.exports = {
   greetCohort,
   maybeShortCircuit,
   errorHandling,
+  checkId,
 };
