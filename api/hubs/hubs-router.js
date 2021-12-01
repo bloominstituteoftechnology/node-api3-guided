@@ -13,18 +13,17 @@ const router = express.Router();
 router.use(sayHi); // plugging the middl. Order matters!
 router.use(greetCohort);
 
-router.get('/', [maybeShortCircuit, maybeShortCircuit], (req, res) => {
+router.get(
+  '/',
+  [maybeShortCircuit, maybeShortCircuit],
+  (req, res, next) => {
   console.log('truly!', req.cohort);
   Hubs.find(req.query)
     .then(hubs => {
       res.status(200).json(hubs);
     })
     .catch(error => {
-      // log error to server
-      console.log(error);
-      res.status(500).json({
-        message: 'Error retrieving the hubs',
-      });
+
     });
 });
 
