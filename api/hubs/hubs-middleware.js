@@ -27,10 +27,10 @@ function maybeShortCircuit(req, res, next) {
   }
 }
 
-function errorHandling(err, req, res, next) {
+function errorHandling(err, req, res, next) { 
   res.status(err.status || 500).json({
     message: `Horror in the router: ${err.message}`,
-    
+    stack: err.stack,
   });
 }
 
