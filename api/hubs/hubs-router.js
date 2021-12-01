@@ -33,15 +33,11 @@ router.get('/:id', (req, res, next) => {
       if (hub) {
         res.status(200).json(hub);
       } else {
-        next({ status: 404, message: '' })
+        next({ status: 404, message: 'not found!' });
       }
     })
     .catch(error => {
-      // log error to server
-      console.log(error);
-      res.status(500).json({
-        message: 'Error retrieving the hub',
-      });
+      next(error);
     });
 });
 
