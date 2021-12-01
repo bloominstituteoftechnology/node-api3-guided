@@ -23,7 +23,7 @@ router.get(
         res.status(200).json(hubs);
       })
       .catch(error => {
-        
+        next(error);
       });
   });
 
