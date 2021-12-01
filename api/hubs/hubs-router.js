@@ -12,7 +12,7 @@ const router = express.Router();
 router.use(sayHi); // plugging the middl. Order matters!
 router.use(greetCohort);
 
-router.get('/', maybeShortCircuit, maybeShortCircuit, (req, res) => {
+router.get('/', [maybeShortCircuit, maybeShortCircuit], (req, res) => {
   console.log('truly!', req.cohort);
   Hubs.find(req.query)
     .then(hubs => {
