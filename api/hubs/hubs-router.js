@@ -41,9 +41,9 @@ router.get('/:id', (req, res, next) => {
     });
 });
 
-router.post('/', (req, res) => {
+router.post('/', (req, res, next) => {
   if (!req.body.name) {
-    res.status(422).json('hey, hubs need a name!')
+    next({ status: 411, message: 'req.body sucks'})
   } else {
     Hubs.add(req.body)
       .then(hub => {
