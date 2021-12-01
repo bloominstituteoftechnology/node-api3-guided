@@ -1,3 +1,5 @@
+const Hub = require('./hubs-model');
+
 function sayHi(req, res, next) {
   // 3 POSSIBLE OUTCOMES
 
@@ -32,7 +34,7 @@ function errorHandling(err, req, res, next) { // eslint-disable-line
   });
 }
 
-function checkId(req, res, next) {
+async function checkId(req, res, next) {
   // pull the hub from the db
   // if it comes back, we'll tack it to the req
   // object and continue...
