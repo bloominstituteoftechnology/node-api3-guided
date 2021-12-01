@@ -5,6 +5,7 @@ function sayHi(req, res, next) {
   // 2- we respond to the client
   // 3- we toss some error (to an error handling middl)
   console.log(`Hello from the hubs router!`);
+  
   next();
 }
 
