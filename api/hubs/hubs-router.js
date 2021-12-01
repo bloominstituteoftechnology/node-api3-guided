@@ -43,18 +43,14 @@ router.get('/:id', (req, res, next) => {
 
 router.post('/', (req, res, next) => {
   if (!req.body.name) {
-    next({ status: 411, message: 'req.body sucks'})
+    next({ status: 411, message: 'req.body sucks' });
   } else {
     Hubs.add(req.body)
       .then(hub => {
         res.status(201).json(hub);
       })
       .catch(error => {
-        // log error to server
-        console.log(error);
-        res.status(500).json({
-          message: 'Error adding the hub',
-        });
+        next(error);
       });
   }
 });
