@@ -20,7 +20,9 @@ function maybeShortCircuit(req, res, next) {
     console.log('ok you can proceed');
     next();
   } else {
-    
+    res.status(500).json({
+      message: 'this request was short circuited!'
+    });
   }
 }
 
