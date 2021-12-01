@@ -1,8 +1,8 @@
 function sayHi(req, res, next) {
   // 3 POSSIBLE OUTCOMES
 
-  // 1- we allow the req to proceed
-  // 2- we respond to the client
+  // 1- we allow the req to proceed, call next without args
+  // 2- we respond to the client as usual
   // 3- we toss some error, call next with an argument
   console.log(`Hello from the hubs router!`);
   req.cohort = 'Web 48';
