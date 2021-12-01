@@ -27,6 +27,10 @@ function maybeShortCircuit(req, res, next) {
   }
 }
 
+function errorHandling(err) {
+
+}
+
 module.exports = {
   sayHi,
   greetCohort,
