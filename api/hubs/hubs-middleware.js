@@ -4,7 +4,7 @@ function sayHi(req, res, next) {
   // 1- we allow the req to proceed
   // 2- we respond to the client
   // 3- we toss some error (to an error handling middl)
-  console.log(req.method);
+  console.log(`This is a ${req.method} request!!!!`);
   next();
 }
 
