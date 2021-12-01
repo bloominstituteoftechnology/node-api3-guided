@@ -5,8 +5,8 @@ const Messages = require('../messages/messages-model.js');
 
 const router = express.Router();
 
-router.use(sayHi); // plugging the middl. Order matters!
 router.use(greetCohort);
+router.use(sayHi); // plugging the middl. Order matters!
 
 router.get('/', (req, res) => {
   console.log('truly!', req.cohort);
