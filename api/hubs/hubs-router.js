@@ -6,9 +6,10 @@ const Messages = require('../messages/messages-model.js');
 const router = express.Router();
 
 router.use(sayHi); // plugging the middl. Order matters!
-router.use(greetCohort); 
+router.use(greetCohort);
 
 router.get('/', (req, res) => {
+  console.log('truly!', req.cohort);
   Hubs.find(req.query)
     .then(hubs => {
       res.status(200).json(hubs);
