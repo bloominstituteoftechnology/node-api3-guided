@@ -3,7 +3,7 @@ function sayHi(req, res, next) {
 
   // 1- we allow the req to proceed
   // 2- we respond to the client
-  // 3- we toss some error (to an error handling middl)
+  // 3- we toss some error, call next with an argument
   console.log(`Hello from the hubs router!`);
   req.cohort = 'Web 48';
   next(); // outcome 1
