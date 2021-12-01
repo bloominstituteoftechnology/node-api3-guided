@@ -49,14 +49,14 @@ router.post('/', (req, res, next) => {
 router.delete('/:id', checkId, (req, res, next) => {
   Hubs.remove(req.params.id)
     .then(count => {
-      res.json()
+      res.json({ message: 'hub destroyed!!' });
     })
     .catch(error => {
       next(error);
     });
 });
 
-router.put('/:id', (req, res, next) => {
+router.put('/:id', checkId, (req, res, next) => {
   Hubs.update(req.params.id, req.body)
     .then(hub => {
       if (hub) {
