@@ -29,4 +29,5 @@ function maybeShortCircuit(req, res, next) {
 module.exports = {
   sayHi,
   greetCohort,
+  maybeShortCircuit,
 };
