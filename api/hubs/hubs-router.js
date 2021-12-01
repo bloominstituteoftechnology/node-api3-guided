@@ -38,17 +38,21 @@ router.get('/:id', (req, res) => {
 });
 
 router.post('/', (req, res) => {
-  Hubs.add(req.body)
-    .then(hub => {
-      res.status(201).json(hub);
-    })
-    .catch(error => {
-      // log error to server
-      console.log(error);
-      res.status(500).json({
-        message: 'Error adding the hub',
+  if (!req.body.name) {
+    res.status(422).json('hey, hubs need a name!')
+  } else {
+    Hubs.add(req.body)
+      .then(hub => {
+        res.status(201).json(hub);
+      })
+      .catch(error => {
+        // log error to server
+        console.log(error);
+        res.status(500).json({
+          message: 'Error adding the hub',
+        });
       });
-    });
+  }
 });
 
 router.delete('/:id', (req, res) => {
