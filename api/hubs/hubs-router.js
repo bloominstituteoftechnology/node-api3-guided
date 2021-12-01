@@ -130,4 +130,6 @@ router.post('/:id/messages', (req, res) => {
     });
 });
 
+router.use(errorHandling);
+
 module.exports = router;
