@@ -33,7 +33,10 @@ function errorHandling(err, req, res, next) { // eslint-disable-line
 }
 
 function checkId(req, res, next) {
-  
+  // pull the hub from the db
+  // if it comes back, we'll tack it to the req
+  // object and continue...
+  // if not, we'll send a 404 to the err handling
 }
 
 module.exports = {
