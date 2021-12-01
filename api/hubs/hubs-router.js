@@ -15,17 +15,17 @@ router.use(greetCohort);
 
 router.get(
   '/',
-  [maybeShortCircuit, maybeShortCircuit],
+  // [maybeShortCircuit, maybeShortCircuit],
   (req, res, next) => {
-  console.log('truly!', req.cohort);
-  Hubs.find(req.query)
-    .then(hubs => {
-      res.status(200).json(hubs);
-    })
-    .catch(error => {
-
-    });
-});
+    console.log('truly!', req.cohort);
+    Hubs.find(req.query)
+      .then(hubs => {
+        res.status(200).json(hubs);
+      })
+      .catch(error => {
+        
+      });
+  });
 
 router.get('/:id', (req, res) => {
   Hubs.findById(req.params.id)
