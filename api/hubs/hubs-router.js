@@ -27,13 +27,13 @@ router.get(
       });
   });
 
-router.get('/:id', (req, res) => {
+router.get('/:id', (req, res, next) => {
   Hubs.findById(req.params.id)
     .then(hub => {
       if (hub) {
         res.status(200).json(hub);
       } else {
-        res.status(404).json({ message: 'Hub not found' });
+        next({ status: 404, message: '' })
       }
     })
     .catch(error => {
