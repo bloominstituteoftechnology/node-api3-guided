@@ -3,6 +3,7 @@ const {
   sayHi,
   greetCohort,
   maybeShortCircuit,
+  errorHandling,
 } = require('./hubs-middleware');
 const Hubs = require('./hubs-model.js');
 const Messages = require('../messages/messages-model.js');
