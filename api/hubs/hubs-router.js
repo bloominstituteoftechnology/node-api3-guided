@@ -1,5 +1,5 @@
 const express = require('express');
-const { sayHi } = require('./hubs-middleware');
+const { sayHi, greetCohort } = require('./hubs-middleware');
 const Hubs = require('./hubs-model.js');
 const Messages = require('../messages/messages-model.js');
 

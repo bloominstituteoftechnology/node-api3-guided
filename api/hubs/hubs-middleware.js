@@ -16,4 +16,5 @@ function greetCohort(req, res, next) {
 
 module.exports = {
   sayHi,
+  greetCohort,
 };
