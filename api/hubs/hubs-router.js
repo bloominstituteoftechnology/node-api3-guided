@@ -29,17 +29,7 @@ router.get(
   });
 
 router.get('/:id', checkId, (req, res, next) => {
-  Hubs.findById(req.params.id)
-    .then(hub => {
-      if (hub) {
-        res.status(200).json(hub);
-      } else {
-        next({ status: 404, message: 'not found!' });
-      }
-    })
-    .catch(error => {
-      next(error);
-    });
+  res.status(200).json(req.hub);
 });
 
 router.post('/', (req, res, next) => {
