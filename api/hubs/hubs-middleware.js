@@ -54,7 +54,8 @@ async function checkId(req, res, next) {
 
 function checkHubPayload() {
   // this is you!
-  //
+  // if req.body.name legit proceed
+  // otherwise send clinet packeing with 422
 }
 
 module.exports = {
