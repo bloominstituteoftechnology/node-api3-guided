@@ -44,6 +44,8 @@ async function checkId(req, res, next) {
     if (hub) {
       req.hub = hub; // saves other middlewarws a db trip
       next();
+    } else {
+      next({ status: 404, message: 'not found!' });
     }
   } catch (error) {
     next(error);
