@@ -52,6 +52,10 @@ async function checkId(req, res, next) {
   }
 }
 
+function checkHubPayload() {
+  
+}
+
 module.exports = {
   sayHi,
   greetCohort,
