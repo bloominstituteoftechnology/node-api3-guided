@@ -60,7 +60,21 @@ router.get('/:id', (req, res) => {
 });
 
 router.post('/', (req, res) => {
-  Hubs.add(req.body)
+  if(typeof req.body.name !== 'string') {
+    res.status(400).json({ message: 'name must be a string' });
+    return;
+  }
+
+  let { name } = req.body;
+
+  if(name.trim() !== '') {
+    res.status(400).json({ message: 'name must not be empty' });
+    return;
+  }
+
+  let hub = { name: name.trim() };
+
+  Hubs.add(hub)
     .then(hub => {
       res.status(201).json(hub);
     })
