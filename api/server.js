@@ -15,12 +15,6 @@ function slithy(req, res, next) {
   next();
 }
 
-function jubjub(req, res, next) {
-  // console.log(req.method, req.originalUrl);
-  req.jubjub = 'jaws that bite and teeth that';
-  next();
-}
-
 // server.use(slithy, jubjub);
 
 server.use('/api/hubs', hubsRouter);
