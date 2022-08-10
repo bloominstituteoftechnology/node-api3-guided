@@ -3,6 +3,9 @@ const express = require('express');
 const Hubs = require('./hubs-model.js');
 const Messages = require('../messages/messages-model.js');
 
+const { validateHub } = require('./hubs-middleware');
+
+
 const router = express.Router();
 
 
@@ -59,22 +62,8 @@ router.get('/:id', (req, res) => {
     });
 });
 
-router.post('/', (req, res) => {
-  if(typeof req.body.name !== 'string') {
-    res.status(400).json({ message: 'name must be a string' });
-    return;
-  }
-
-  let { name } = req.body;
-
-  if(name.trim() !== '') {
-    res.status(400).json({ message: 'name must not be empty' });
-    return;
-  }
-
-  let hub = { name: name.trim() };
-
-  Hubs.add(hub)
+router.post('/', validateHub, (req, res) => {
+  Hubs.add(req.newHub)
     .then(hub => {
       res.status(201).json(hub);
     })
@@ -105,8 +94,8 @@ router.delete('/:id', (req, res) => {
     });
 });
 
-router.put('/:id', (req, res) => {
-  Hubs.update(req.params.id, req.body)
+router.put('/:id', validateHub, (req, res) => {
+  Hubs.update(req.params.id, req.newHub)
     .then(hub => {
       if (hub) {
         res.status(200).json(hub);
