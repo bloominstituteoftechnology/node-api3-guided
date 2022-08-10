@@ -28,6 +28,7 @@ server.use('/api/hubs', hubsRouter);
 server.get('/', (req, res) => {
 
   console.log(req.jabberwocky);
+  console.log(req.jubjub);
 
   res.send(`
     <h2>Hubs API</h2>
