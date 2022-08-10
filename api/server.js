@@ -8,7 +8,7 @@ server.use(express.json());
 
 
 server.use((req, res, next) => {
-  res.send('middleware!');
+  console.log('middleware!');
   next();
 });
 
