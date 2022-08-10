@@ -35,4 +35,8 @@ server.use('*', (req, res) => {
   res.status(404).json({ message: `${req.method} ${req.baseUrl} not found!` });
 });
 
+server.use((err, req, res, next) => {
+  res.json(err);
+});
+
 module.exports = server;
