@@ -21,11 +21,11 @@ function jubjub(req, res, next) {
   next();
 }
 
-server.use(slithy, jubjub);
+// server.use(slithy, jubjub);
 
 server.use('/api/hubs', hubsRouter);
 
-server.get('/', (req, res) => {
+server.get('/', slithy, (req, res) => {
 
   console.log(req.jabberwocky);
   console.log(req.jubjub);
