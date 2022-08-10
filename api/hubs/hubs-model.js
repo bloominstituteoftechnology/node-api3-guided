@@ -2,6 +2,7 @@ const db = require('../../data/dbConfig.js');
 
 module.exports = {
   find,
+  findByName,
   findById,
   add,
   remove,
@@ -19,6 +20,12 @@ function find(query) {
     .offset(offset);
 
   return rows;
+}
+
+function findByName(name) {
+  return db('hubs')
+    .where({ name })
+    .first();
 }
 
 function findById(id) {
