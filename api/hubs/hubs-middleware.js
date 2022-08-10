@@ -1,19 +1,12 @@
 function validateHub(req, res, next) {
   if(typeof req.body.name !== 'string') {
     res.status(400).json({ message: 'name must be a string' });
-    return;
-  }
-
-  let { name } = req.body;
-
-  if(name.trim() !== '') {
+  } else if(req.body.trim() !== '') {
     res.status(400).json({ message: 'name must not be empty' });
-    return;
+  } else {
+    req.newHub = { name: req.body.trim() };
+    next();
   }
-
-  req.newHub = { name: name.trim() };
-
-  next();
 }
 
 module.exports = {
