@@ -36,7 +36,7 @@ server.use('*', (req, res) => {
 });
 
 server.use((err, req, res, next) => {
-  res.json(err);
+  res.status(err.status).json({ message: err.message });
 });
 
 module.exports = server;
