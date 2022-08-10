@@ -7,9 +7,9 @@ const server = express();
 server.use(express.json());
 
 
-server.use((req, res) => {
-  res.send('middleware!');
-});
+// server.use((req, res) => {
+//   res.send('middleware!');
+// });
 
 
 server.use('/api/hubs', hubsRouter);
