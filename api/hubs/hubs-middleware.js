@@ -31,6 +31,7 @@ function validateHubId(req, res, next) {
                 return;
             }
 
+            req.existingHub = result;
             next();
         });
 }
