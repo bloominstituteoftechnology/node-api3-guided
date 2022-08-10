@@ -17,6 +17,9 @@ server.use(morgan('dev'));
 server.use('/api/hubs', hubsRouter);
 
 server.get('/', (req, res) => {
+
+  console.log(req.jabberwocky);
+
   res.send(`
     <h2>Hubs API</h2>
     <p>Welcome to the Hubs API</p>
