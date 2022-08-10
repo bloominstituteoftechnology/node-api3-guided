@@ -16,8 +16,11 @@ const router = express.Router();
 // router.use(jubjub);
 
 function moodyGatekeeper(req, res, next) {
-  res.status(403).json({ message: 'you are forbidden' });
-  return;
+  if(Math.random() > 0.5) {
+    res.status(403).json({ message: 'you are forbidden' });
+  } else {
+    next();
+  }
 }
 
 router.get('/', moodyGatekeeper, (req, res) => {
