@@ -36,7 +36,8 @@ server.use('*', (req, res) => {
 });
 
 server.use((err, req, res, next) => {
-  res.status(err.status).json({ message: err.message });
+  let { status = 500, message = 'internal server error' } = err;
+  res.status(status).json({ message: message });
 });
 
 module.exports = server;
