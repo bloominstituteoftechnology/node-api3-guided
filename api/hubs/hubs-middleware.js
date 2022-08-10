@@ -9,6 +9,16 @@ function validateHub(req, res, next) {
   }
 }
 
+function validateHubIsUnique(req, res, next) {
+    if(alreadyExists(req.newHub.name)) {
+        res.status(400).json({ message: 'name must be unique' });
+        return;
+    }
+    
+    next();
+}
+
 module.exports = {
     validateHub,
+    validateHubIsUnique,
 };
