@@ -7,16 +7,18 @@ const router = express.Router();
 
 
 
-function jubjub(req, res, next) {
-  // console.log(req.method, req.originalUrl);
-  req.jubjub = 'jaws that bite and teeth that';
-  next();
-}
+// function jubjub(req, res, next) {
+//   // console.log(req.method, req.originalUrl);
+//   req.jubjub = 'jaws that bite and teeth that';
+//   next();
+// }
 
-router.use(jubjub);
+// router.use(jubjub);
 
 router.get('/', (req, res) => {
 
+  res.status(403).json({ message: 'you are forbidden' });
+  return;
 
   console.log(req.jabberwocky);
   console.log(req.jubjub);
