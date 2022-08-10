@@ -1,5 +1,5 @@
 const express = require('express'); // importing a CommonJS module
-const morgan = require('morgan');
+// const morgan = require('morgan');
 
 const hubsRouter = require('./hubs/hubs-router.js');
 
@@ -7,7 +7,7 @@ const server = express();
 
 server.use(express.json());
 
-server.use(morgan('dev'));
+// server.use(morgan('dev'));
 
 // server.use((req, res, next) => {
 //   console.log(req.method, req.originalUrl);
