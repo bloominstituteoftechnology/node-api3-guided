@@ -9,10 +9,11 @@ server.use(express.json());
 
 // server.use(morgan('dev'));
 
-// server.use((req, res, next) => {
-//   console.log(req.method, req.originalUrl);
-//   next();
-// });
+server.use((req, res, next) => {
+  // console.log(req.method, req.originalUrl);
+  req.jabberwocky = 'slithy toves';
+  next();
+});
 
 server.use('/api/hubs', hubsRouter);
 
