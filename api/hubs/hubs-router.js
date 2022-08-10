@@ -3,7 +3,7 @@ const express = require('express');
 const Hubs = require('./hubs-model.js');
 const Messages = require('../messages/messages-model.js');
 
-const { validateHub, validateHubIsUnique } = require('./hubs-middleware');
+const { validateHub, validateHubIsUnique, validateHubId } = require('./hubs-middleware');
 
 
 const router = express.Router();
@@ -44,7 +44,7 @@ router.get('/', moodyGatekeeper, (req, res) => {
     });
 });
 
-router.get('/:id', (req, res) => {
+router.get('/:id', validateHubId, (req, res) => {
   Hubs.findById(req.params.id)
     .then(hub => {
       if (hub) {
