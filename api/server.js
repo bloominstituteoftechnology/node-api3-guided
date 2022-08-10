@@ -6,12 +6,14 @@ const server = express();
 
 server.use(express.json());
 
+server.use((req, res, next) => {
+  console.log(req.method, req.originalUrl);
+  next();
+});
+
 server.use('/api/hubs', hubsRouter);
 
 server.get('/', (req, res) => {
-  console.log(req.method, req.originalUrl);
-
-
   res.send(`
     <h2>Hubs API</h2>
     <p>Welcome to the Hubs API</p>
