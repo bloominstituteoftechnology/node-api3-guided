@@ -1,3 +1,5 @@
+const Hubs = require('./hubs-model');
+
 function validateHub(req, res, next) {
   if(typeof req.body.name !== 'string') {
     res.status(400).json({ message: 'name must be a string' });
@@ -10,12 +12,15 @@ function validateHub(req, res, next) {
 }
 
 function validateHubIsUnique(req, res, next) {
-    if(alreadyExists(req.newHub.name)) {
-        res.status(400).json({ message: 'name must be unique' });
-        return;
-    }
-    
-    next();
+    Hubs.findByName(req.newHub.name)
+        .then(result => {
+            if(result != null) {
+                res.status(400).json({ message: 'name must be unique' });
+                return;
+            }
+
+            next();
+        });
 }
 
 module.exports = {
