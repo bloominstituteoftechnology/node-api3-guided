@@ -9,11 +9,19 @@ server.use(express.json());
 
 // server.use(morgan('dev'));
 
-server.use((req, res, next) => {
+function slithy(req, res, next) {
   // console.log(req.method, req.originalUrl);
   req.jabberwocky = 'slithy toves';
   next();
-});
+}
+
+function jubjub(req, res, next) {
+  // console.log(req.method, req.originalUrl);
+  req.jubjub = 'jaws that bite and teeth that';
+  next();
+}
+
+server.use(slithy, jubjub);
 
 server.use('/api/hubs', hubsRouter);
 
