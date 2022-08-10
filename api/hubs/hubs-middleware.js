@@ -47,7 +47,7 @@ function validateHubId(req, res, next) {
             res.status(500).json({
                 message: 'Error retrieving the hub',
             });
-        });;
+        });
 }
 
 module.exports = {
