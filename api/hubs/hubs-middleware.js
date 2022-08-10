@@ -22,33 +22,21 @@ function validateHubIsUnique(req, res, next) {
 
             next();
         })
-        .catch(error => {
-            // log error to server
-            console.log(error);
-            res.status(500).json({
-                message: 'Error retrieving the hub',
-            });
-        });
+        .catch(error => next(error));
 }
 
 function validateHubId(req, res, next) {
     Hubs.findById(req.params.id)
         .then(result => {
             if (result == null) {
-                res.status(404).json({ message: 'The hub could not be found' });
+                next({ status: 404, message: 'The hub could not be found' });
                 return;
             }
 
             req.existingHub = result;
             next();
         })
-        .catch(error => {
-            // log error to server
-            console.log(error);
-            res.status(500).json({
-                message: 'Error retrieving the hub',
-            });
-        });
+        .catch(error => next(error));
 }
 
 module.exports = {
