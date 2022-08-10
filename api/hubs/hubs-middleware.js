@@ -23,7 +23,20 @@ function validateHubIsUnique(req, res, next) {
         });
 }
 
+function validateHubId(req, res, next) {
+    Hubs.findById(req.params.id)
+        .then(result => {
+            if(result == null) {
+                res.status(404).json({ message: 'The hub could not be found' });
+                return;
+            }
+
+            next();
+        });
+}
+
 module.exports = {
     validateHub,
     validateHubIsUnique,
+    validateHubId,
 };
