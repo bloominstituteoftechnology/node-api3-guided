@@ -5,12 +5,22 @@ const Messages = require('../messages/messages-model.js');
 
 const router = express.Router();
 
+
+
+function jubjub(req, res, next) {
+  // console.log(req.method, req.originalUrl);
+  req.jubjub = 'jaws that bite and teeth that';
+  next();
+}
+
+router.use(jubjub);
+
 router.get('/', (req, res) => {
 
 
   console.log(req.jabberwocky);
   console.log(req.jubjub);
-  
+
   Hubs.find(req.query)
     .then(hubs => {
       res.status(200).json(hubs);
