@@ -3,7 +3,7 @@ const express = require('express');
 const Hubs = require('./hubs-model.js');
 const Messages = require('../messages/messages-model.js');
 
-const { validateHub } = require('./hubs-middleware');
+const { validateHub, validateHubIsUnique } = require('./hubs-middleware');
 
 
 const router = express.Router();
@@ -62,7 +62,7 @@ router.get('/:id', (req, res) => {
     });
 });
 
-router.post('/', validateHub, (req, res) => {
+router.post('/', validateHub, validateHubIsUnique, (req, res) => {
   Hubs.add(req.newHub)
     .then(hub => {
       res.status(201).json(hub);
